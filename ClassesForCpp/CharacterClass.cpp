@@ -62,17 +62,45 @@ void CharacterClass::DisplayInfo()
 
 
 }
+//
+//string CharacterClass::SuperPowerChooser() const
+//{
+//
+//
+//
+//	return GetSuperPowerName(SuperPower);
+//}
 
-string GetSuperPowerName(MySuperPowerEnumClass SuperPower)
 
-
+bool CharacterClass::SetSuperPowerFromInput(int Input)
 {
-	
+	if (Input < 1 || Input > 4)
+	{
+
+		cout << "Wrong Choice" << endl;
+
+
+		return false;
+	}
+
+	else {
+
+		SuperPower = static_cast<MySuperPowerEnumClass>(Input);
+
+		cout << "You chose: " << GetSuperPowerName(SuperPower) << endl;
+
+		return true;
+	}
+
+}
+
+string CharacterClass::GetSuperPowerName(MySuperPowerEnumClass SuperPower)
+{
 	switch (SuperPower)
 	{
 	case MySuperPowerEnumClass::Fire:
 		return "Fire";
-		
+
 	case MySuperPowerEnumClass::Water:
 		return "Water";
 
@@ -88,20 +116,21 @@ string GetSuperPowerName(MySuperPowerEnumClass SuperPower)
 
 
 	}
-	
 }
 
 
 
-void CharacterClass::InventoryList()
-{
-	cout <<
-
-}
-
-void CharacterClass::AddToInventory(string item)
-{
 
 
-}
+//void CharacterClass::InventoryList()
+//{
+//	cout <<
+//
+//}
+//
+//void CharacterClass::AddToInventory(string item)
+//{
+//
+//
+//}
 

@@ -12,10 +12,12 @@ using std::vector;
 
 int main()
 {
+
+
 	CharacterClass RandomAdventurer;
 	RandomAdventurer.DisplayInfo();
 
-	RandomAdventurer.GetSuperPowerName(MyPower);
+	
 
 	string AdventurerName;
 
@@ -28,7 +30,10 @@ int main()
 
 	cout << "Choose Your Power" << endl;
 
-	cin >> Random
+
+	int PowerInput;
+	cin >> PowerInput;
+	MyCharacter.SetSuperPowerFromInput(PowerInput);
 
 }
 

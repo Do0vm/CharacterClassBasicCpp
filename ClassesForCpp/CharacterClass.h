@@ -22,19 +22,22 @@ public:
 	CharacterClass(string name, int maxHealth, int maxMana, vector<string> inventory);
 
 	void SetName(string name);
-	void SetSuperPower(string name);
+	
 	string GetName() const;
 	void DisplayInfo();
 
+	//string SuperPowerChooser() const;
 
-	string GetSuperPowerName(MySuperPowerEnumClass SuperPower) const;
+	bool SetSuperPowerFromInput(int Input);
 
+	static string GetSuperPowerName(MySuperPowerEnumClass SuperPower);
 
+	
 protected:
 	void DiceRoll();
 	
-	void InventoryList();
-	void AddToInventory(string item);
+	//void InventoryList();
+	//void AddToInventory(string item);
 
 
 private:
@@ -51,6 +54,6 @@ private:
 
 	vector<string> cInventory;
 
-
+	MySuperPowerEnumClass SuperPower;
 };
 
