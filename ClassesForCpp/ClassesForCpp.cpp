@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "CharacterClass.h"
+#include "Goblin.h"
 
 using std::cout;
 using std::endl;
@@ -14,19 +15,23 @@ int main()
 {
 
 
-	CharacterClass RandomAdventurer;
-	RandomAdventurer.DisplayInfo();
+	cout << "Hello and welcome!" << endl;
+	cout << "Here are your stats before you go on your adventure" << endl;
+
+	CharacterClass randomAdventurer;
+	randomAdventurer.DisplayInfo();
+
+	Goblin goblin;
+
+
+
 
 	
 
-	string AdventurerName;
-
-	cout << "Set Name: " << endl;
-	cin >> AdventurerName;
-
 	vector<string>MyInventory{ "Knife", "Wand" };
+	vector<string>goblinInventory{ "Rusty Dagger" };
 
-	CharacterClass MyCharacter(AdventurerName, 30, 30, MyInventory);
+	CharacterClass MyCharacter("Player", 2, 3, 30, 30, MyInventory);
 
 	cout << "Choose Your Power" << endl;
 
@@ -34,6 +39,12 @@ int main()
 	int PowerInput;
 	cin >> PowerInput;
 	MyCharacter.SetSuperPowerFromInput(PowerInput);
+
+
+
+	Goblin MyGoblin("Goblin",2,2, 20, 10, goblinInventory);
+
+	goblin.DisplayInfo();
 
 }
 

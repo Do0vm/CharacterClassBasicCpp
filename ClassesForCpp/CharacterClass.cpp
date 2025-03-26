@@ -10,21 +10,25 @@ using std::rand;
 
 
 CharacterClass::CharacterClass() :
-	cName{"ChatGPT  "},
-	cMaxHealth(20)
+	cName{"Player"},
+	cMaxHealth(20),
+	cMaxMana(20),
+	cHealth(5),
+	cMana(12)
 {
 	
-	cHealth = cMaxHealth;
+	
 
 
 }
 
-CharacterClass::CharacterClass(string name, int maxHealth, int maxMana, vector<string> inventory):
+CharacterClass::CharacterClass(string name, int health, int mana, int maxHealth, int maxMana, vector<string>inventory):
 	cName{ name },
 	cMaxHealth{ maxHealth },
 	cMaxMana{ maxMana },
-	cInventory{ inventory }
-
+	cInventory{ inventory },
+	cMana{mana},
+	cHealth{health}
 {
 
 
@@ -34,12 +38,14 @@ CharacterClass::CharacterClass(string name, int maxHealth, int maxMana, vector<s
 
 void CharacterClass::SetName(string name)
 {
-	cName = name;
+	cName = adventurerName;
+	
 }
 
 string CharacterClass::GetName() const
 {
-	return cName;
+	return 	adventurerName;
+	
 }
 
 
@@ -55,7 +61,7 @@ void CharacterClass::DiceRoll()
 void CharacterClass::DisplayInfo()
 {
 
-	cout << "Hello" << cName << endl;
+	cout << "Stats for: " << cName << endl;
 	cout << "Your Health is " << cHealth << "/" << cMaxHealth << endl;
 	cout << "Your Mana is " << cMana << "/" << cMaxHealth << endl;
 

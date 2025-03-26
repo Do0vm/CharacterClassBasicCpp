@@ -7,19 +7,20 @@
 using std::string;
 using std::vector;
 using std::map;
-
+using std::vector;
 
 class CharacterClass
 {
 public:
 
 	
+	string adventurerName;
 
 
 
 
 	CharacterClass();
-	CharacterClass(string name, int maxHealth, int maxMana, vector<string> inventory);
+	CharacterClass(string name, int health, int mana, int maxHealth, int maxMana, vector<string>inventory);
 
 	void SetName(string name);
 	
@@ -30,12 +31,15 @@ public:
 
 	bool SetSuperPowerFromInput(int Input);
 
-	static string GetSuperPowerName(MySuperPowerEnumClass SuperPower);
+	string GetSuperPowerName(MySuperPowerEnumClass SuperPower);
 
 	
 protected:
 	void DiceRoll();
 	
+
+
+
 	//void InventoryList();
 	//void AddToInventory(string item);
 

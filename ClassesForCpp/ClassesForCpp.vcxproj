@@ -129,9 +129,11 @@
   <ItemGroup>
     <ClCompile Include="CharacterClass.cpp" />
     <ClCompile Include="ClassesForCpp.cpp" />
+    <ClCompile Include="Goblin.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CharacterClass.h" />
+    <ClInclude Include="Goblin.h" />
     <ClInclude Include="SuperPowerEnums.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
