@@ -9,9 +9,6 @@ Goblin::Goblin(string name, int health, int mana, int maxHealth, int maxMana, ve
 	
 }
 
-void Goblin::SneakAttack()
-{
-}
 
 void Goblin::DisplayInfo()
 {

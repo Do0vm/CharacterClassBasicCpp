@@ -14,17 +14,24 @@ class CharacterClass
 public:
 
 	
-	string adventurerName;
-
-
+	
 
 
 	CharacterClass();
 	CharacterClass(string name, int health, int mana, int maxHealth, int maxMana, vector<string>inventory);
 
-	void SetName(string name);
-	
-	string GetName() const;
+	int GetHealth() const; 
+	int GetAttack() const; 
+	int GetMana() const;
+
+
+	void setHealth(int health);
+	void setAttack(int attack);
+	void setMana(int mana);
+
+	void RecieveDamage(int damage);
+
+
 	void DisplayInfo();
 
 	//string SuperPowerChooser() const;
@@ -53,8 +60,8 @@ private:
 	int cHealth;
 	int cMaxMana;
 	int cMana;
-
-
+	int cDamage;
+	int cAttack;
 
 	vector<string> cInventory;
 

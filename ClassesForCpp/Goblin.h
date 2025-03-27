@@ -15,7 +15,6 @@ public:
 
 	Goblin(string name,int health,int mana, int maxHealth, int maxMana, vector<string>inventory);
 
-	void SneakAttack();
 
 	virtual void DisplayInfo();
 

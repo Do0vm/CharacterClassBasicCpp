@@ -36,17 +36,41 @@ CharacterClass::CharacterClass(string name, int health, int mana, int maxHealth,
 
 }
 
-void CharacterClass::SetName(string name)
+int CharacterClass::GetHealth() const
 {
-	cName = adventurerName;
-	
+
+
+	return cHealth;
 }
 
-string CharacterClass::GetName() const
+int CharacterClass::GetAttack() const
 {
-	return 	adventurerName;
-	
+
+
+	return cAttack;
 }
+
+int CharacterClass::GetMana() const
+{
+
+
+	return cMana;
+}
+
+void CharacterClass::setHealth(int health)
+{
+}
+
+void CharacterClass::setAttack(int attack)
+{
+}
+
+void CharacterClass::setMana(int mana)
+{
+}
+
+
+
 
 
 void CharacterClass::DiceRoll()
