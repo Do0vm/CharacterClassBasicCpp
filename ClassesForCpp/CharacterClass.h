@@ -1,70 +1,38 @@
 #pragma once
 #include <string>
 #include <vector>
-#include <map>
-#include "SuperPowerEnums.h"
 
-using std::string;
-using std::vector;
-using std::map;
-using std::vector;
+enum class SuperPower { None = 0, Fire = 1, Water = 2, Ice = 3, Air = 4 };
 
-class CharacterClass
-{
-public:
-
-	
-	
-
-
-	CharacterClass();
-	CharacterClass(string name, int health, int mana, int maxHealth, int maxMana, vector<string>inventory);
-
-	int GetHealth() const; 
-	int GetAttack() const; 
-	int GetMana() const;
-
-
-	void setHealth(int health);
-	void setAttack(int attack);
-	void setMana(int mana);
-
-	void RecieveDamage(int damage);
-
-
-	void DisplayInfo();
-
-	//string SuperPowerChooser() const;
-
-	bool SetSuperPowerFromInput(int Input);
-
-	string GetSuperPowerName(MySuperPowerEnumClass SuperPower);
-
-	
+class CharacterClass {
 protected:
-	void DiceRoll();
-	
+    std::string name;
 
+    int health, maxHealth;
 
+    int mana, maxMana;
 
-	//void InventoryList();
-	//void AddToInventory(string item);
+    int attack;
 
+    std::vector<std::string> inventory;
 
-private:
-	string cName;
-	string cSuperPower;
-	map<string, int> cAbilities;
+    SuperPower superPower;
+public:
+    CharacterClass();
 
-	int cMaxHealth;
-	int cHealth;
-	int cMaxMana;
-	int cMana;
-	int cDamage;
-	int cAttack;
+    CharacterClass(const std::string& n, int hp, int mp, int mhp, int mmp, const std::vector<std::string>& inv);
 
-	vector<string> cInventory;
+    virtual ~CharacterClass() = default;
 
-	MySuperPowerEnumClass SuperPower;
+    virtual void displayInfo() const;
+
+    bool chooseSuperPower(int choice);
+
+    std::string getSuperPowerName() const;
+
+    void listInventory() const;
+
+    void addItem(const std::string& item);
+
+    virtual int attackRoll() const;
 };
-

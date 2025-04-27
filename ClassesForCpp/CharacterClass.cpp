@@ -1,166 +1,87 @@
 #include "CharacterClass.h"
-#pragma once
-
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 
-using std::cout;
-using std::cin;
-using std::endl;
-using std::rand;
-
-
-CharacterClass::CharacterClass() :
-	cName{"Player"},
-	cMaxHealth(20),
-	cMaxMana(20),
-	cHealth(5),
-	cMana(12)
+CharacterClass::CharacterClass()
+    : name("Adventurer"), health(10), mana(10), maxHealth(10), maxMana(10),
+    attack(1), inventory{}, superPower(SuperPower::None)
 {
-	
-	
-
-
+    std::srand(static_cast<unsigned>(std::time(nullptr)));
 }
 
-CharacterClass::CharacterClass(string name, int health, int mana, int maxHealth, int maxMana, vector<string>inventory):
-	cName{ name },
-	cMaxHealth{ maxHealth },
-	cMaxMana{ maxMana },
-	cInventory{ inventory },
-	cMana{mana},
-	cHealth{health}
+CharacterClass::CharacterClass(const std::string& n, int hp, int mp, int mhp, int mmp, const std::vector<std::string>& inv)
+    : name(n), health(hp), mana(mp), maxHealth(mhp), maxMana(mmp),
+    attack(1), inventory(inv), superPower(SuperPower::None)
 {
-
-
-
-
-}
-
-int CharacterClass::GetHealth() const
-{
-
-
-	return cHealth;
-}
-
-int CharacterClass::GetAttack() const
-{
-
-
-	return cAttack;
-}
-
-int CharacterClass::GetMana() const
-{
-
-
-	return cMana;
-}
-
-void CharacterClass::setHealth(int health)
-{
-}
-
-void CharacterClass::setAttack(int attack)
-{
-}
-
-void CharacterClass::setMana(int mana)
-{
+    std::srand(static_cast<unsigned>(std::time(nullptr)));
 }
 
 
 
+void CharacterClass::displayInfo() const {
 
 
-void CharacterClass::DiceRoll()
-{
-	srand(time(NULL));
-	int DiceNumber;
+    std::cout << "=== " << name << " ===\n"
+        << "HP: " << health << "/" << maxHealth << "\n"
+        << "Mana: " << mana << "/" << maxMana << "\n"
+        << "Attack power: " << attack << "\n"
+        << "Super Power: " << getSuperPowerName() << "\n";
 
-	DiceNumber = (rand() % 6) + 1;
+
+    listInventory();
+}
+
+bool CharacterClass::chooseSuperPower(int choice) {
+
+
+    if (choice < 1 || choice > 4) return false;
+
+
+    superPower = static_cast<SuperPower>(choice);
+
+
+    return true;
+}
+
+std::string CharacterClass::getSuperPowerName() const {
+
+
+
+    switch (superPower) {
+    case SuperPower::Fire:  return "Fire";
+
+    case SuperPower::Water: return "Water";
+
+    case SuperPower::Ice:   return "Ice";
+
+    case SuperPower::Air:   return "Air";
+
+    default:                return "None";
+    }
+}
+
+void CharacterClass::listInventory() const {
+
+    std::cout << "Inventory:";
+
+    for (const auto& item : inventory) {
+
+        std::cout << " [" << item << "]";
+
+    }
+
+    std::cout << "\n";
+}
+
+void CharacterClass::addItem(const std::string& item) {
+
+    inventory.push_back(item);
 
 }
 
-void CharacterClass::DisplayInfo()
-{
+int CharacterClass::attackRoll() const {
 
-	cout << "Stats for: " << cName << endl;
-	cout << "Your Health is " << cHealth << "/" << cMaxHealth << endl;
-	cout << "Your Mana is " << cMana << "/" << cMaxHealth << endl;
-
-
+    return (std::rand() % 6 + 1) + attack;
 
 }
-//
-//string CharacterClass::SuperPowerChooser() const
-//{
-//
-//
-//
-//	return GetSuperPowerName(SuperPower);
-//}
-
-
-bool CharacterClass::SetSuperPowerFromInput(int Input)
-{
-	if (Input < 1 || Input > 4)
-	{
-
-		cout << "Wrong Choice" << endl;
-
-
-		return false;
-	}
-
-	else {
-
-		SuperPower = static_cast<MySuperPowerEnumClass>(Input);
-
-		cout << "You chose: " << GetSuperPowerName(SuperPower) << endl;
-
-		return true;
-	}
-
-}
-
-string CharacterClass::GetSuperPowerName(MySuperPowerEnumClass SuperPower)
-{
-	switch (SuperPower)
-	{
-	case MySuperPowerEnumClass::Fire:
-		return "Fire";
-
-	case MySuperPowerEnumClass::Water:
-		return "Water";
-
-	case MySuperPowerEnumClass::Ice:
-		return "Ice";
-
-	case MySuperPowerEnumClass::Air:
-		return "Air";
-
-	default:
-
-		return "Air";
-
-
-	}
-}
-
-
-
-
-
-//void CharacterClass::InventoryList()
-//{
-//	cout <<
-//
-//}
-//
-//void CharacterClass::AddToInventory(string item)
-//{
-//
-//
-//}
-

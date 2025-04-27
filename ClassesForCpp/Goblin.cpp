@@ -1,18 +1,24 @@
 #include "Goblin.h"
+#include <iostream>
 
-Goblin::Goblin() :CharacterClass("Goblin",2,2,15,10,vector<string>{})
+Goblin::Goblin()
+    : CharacterClass("Goblin", 5, 0, 5, 0, { "Rusty Dagger" })
 {
+    attack = 2;
 }
 
-Goblin::Goblin(string name, int health, int mana, int maxHealth, int maxMana, vector<string>inventory) : CharacterClass(name,health,mana,maxHealth,maxMana,inventory)
+Goblin::Goblin(int hp, int mp, int mhp, int mmp)
+    : CharacterClass("Goblin", hp, mp, mhp, mmp, { "Rusty Dagger" })
 {
-	
+    attack = 2;
 }
 
+void Goblin::displayInfo() const {
+    std::cout << "--- Enemy: " << name << " ---\n"
+        << "HP: " << health << "/" << maxHealth << "\n"
+        << "Attack: " << attack << "\n";
+}
 
-void Goblin::DisplayInfo()
-{
-	CharacterClass::DisplayInfo();
-
-	cout << "Class: Goblin" << endl;
+int Goblin::attackRoll() const {
+    return (std::rand() % 4 + 1) + attack;
 }

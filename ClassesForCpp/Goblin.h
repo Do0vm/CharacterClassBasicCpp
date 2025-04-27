@@ -1,23 +1,15 @@
 #pragma once
 #include "CharacterClass.h"
-#include <vector>
-#include <string>
-#include <iostream>
-
-using std::endl;
-using std::cout;
 
 class Goblin : public CharacterClass {
 
 public:
-	Goblin();
+    Goblin();
 
+    Goblin(int hp, int mp, int mhp, int mmp);
 
-	Goblin(string name,int health,int mana, int maxHealth, int maxMana, vector<string>inventory);
+    void displayInfo() const override;
 
-
-	virtual void DisplayInfo();
-
-
+    int attackRoll() const override;
 
 };
